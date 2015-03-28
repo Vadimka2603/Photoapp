@@ -5,11 +5,7 @@
 <h2>
  Загружай свое фото и стань победителем!
   </h2>
-<%= link_to "Присоедениться!", '#', class: "btn btn-lg btn-primary" %>
+<%= link_to "Войти как пользователь VK", "/auth/vkontakte", id: "sign_in", class: "button1" %>
+<%= link_to "Войти как пользователь FB", "/auth/facebook", id: "sign_in", class: "button1" %>
+
 </div>
-
-<%= link_to image_tag("rails.png", title: "Rails logo"),
-            'http://rubyonrails.org/' %>
-
-
-

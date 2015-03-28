@@ -5,22 +5,13 @@
           <ul class="nav navbar-nav navbar-right">
             <li><%= link_to "Главная страница", root_path %></li>
             <li><%= link_to "Помощь",   help_path %></li>
-            <li><div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
+            <li><% if current_user %>
+   
+    <%= link_to "Выход", signout_path, id: "Sign out" %>
   <% else %>
-    <%= link_to "Sign in with VK", "/auth/vkontakte", id: "sign_in" %>
+    
   <% end %>
-</div>
-li><div id="user_nav">
-  <% if current_user %>
-    Signed in as <strong><%= current_user.name %></strong>!
-    <%= link_to "Sign out", signout_path, id: "sign_out" %>
-  <% else %>
-    <%= link_to "Sign in with FB", "/auth/facebook", id: "sign_in" %>
-  <% end %>
-</div></li>
+</li>
           </ul>
         </nav>
       </div>
