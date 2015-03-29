@@ -6,7 +6,8 @@ class UsersController < ApplicationController
     @micropost = current_user.microposts.build if current_user
   end
 
-  def new
+  def index
+    @users = User.paginate(page: params[:page])
   end
 
   
