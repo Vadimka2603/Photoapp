@@ -7,6 +7,10 @@
   </h2>
   <% if current_user %>
     <%= link_to "Моя страница", current_user, class: "button1"%>
+    <div class="col-md-8">
+      <h3>Micropost Feed</h3>
+      <%= render 'shared/feed' %>
+    </div>
     <% else %>
 <%= link_to "Войти как пользователь VK", "/auth/vkontakte", id: "sign_in", class: "button1" %>
 <%= link_to "Войти как пользователь FB", "/auth/facebook", id: "sign_in", class: "button1" %>

@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
     user.save
   end
 end
+
+def feed
+    @microposts = Micropost.all
+  end
 end
