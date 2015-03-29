@@ -1,7 +1,7 @@
 class StaticPagesController < ApplicationController
   def home
   	if current_user
-  	@feed_items = current_user.feed.paginate(page: params[:page])
+  	@feed_items = current_user.feed
   end
 end
 

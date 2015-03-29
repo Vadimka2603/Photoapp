@@ -10,6 +10,6 @@ class User < ActiveRecord::Base
 end
 
 def feed
-    @microposts = Micropost.all
+    @microposts = Micropost.order(:created_at).take(10)
   end
 end

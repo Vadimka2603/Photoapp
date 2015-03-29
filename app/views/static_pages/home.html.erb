@@ -1,5 +1,5 @@
 
-<% provide(:title, "Home") %>
+<% provide(:title, "Главная страница") %>
 <div class="center jumbotron">
   <h1>Фотоконкурс</h1>
 <h2>
@@ -7,8 +7,10 @@
   </h2>
   <% if current_user %>
     <%= link_to "Моя страница", current_user, class: "button1"%>
+    </div>
+
     <div class="col-md-8">
-      <h3>Micropost Feed</h3>
+      <h3>Последние добавленные фото</h3>
       <%= render 'shared/feed' %>
     </div>
     <% else %>
@@ -16,4 +18,4 @@
 <%= link_to "Войти как пользователь FB", "/auth/facebook", id: "sign_in", class: "button1" %>
 <% end %>
 
-</div>
+
