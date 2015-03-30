@@ -1,8 +1,16 @@
 <% provide(:title, "Рейтинг") %>
+
   <h1>Рейтинг</h1>
- 
+ <% if @current_user %>
  <%= paginate @all_items %>
 
   <ol class="microposts">
     <%= render @all_items %>
   </ol>
+<% else %>
+
+<p>
+  Просмотр рейтинга доступен только зарегестрированым пользвателям
+</p>
+
+<% end %>
