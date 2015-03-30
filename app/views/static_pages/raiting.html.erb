@@ -1,6 +1,7 @@
 <% provide(:title, "Рейтинг") %>
   <h1>Рейтинг</h1>
-<p>А вот тут когда нибудь будет рейтинг, если я смогу добавить лайки</p>
-
-  </body>
-</html>
+<% if @all_items.any? %>
+  <ol class="microposts">
+    <%= render @all_items %>
+  </ol>
+<% end %>

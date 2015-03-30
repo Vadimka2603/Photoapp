@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150329120212) do
+ActiveRecord::Schema.define(version: 20150330132132) do
 
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
@@ -32,6 +32,7 @@ ActiveRecord::Schema.define(version: 20150329120212) do
     t.datetime "oauth_expires_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.string   "avatar"
   end
 
 end

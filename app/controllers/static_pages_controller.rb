@@ -9,5 +9,6 @@ end
   end
 
   def raiting
+  	@all_items = current_user.all
   end
 end
