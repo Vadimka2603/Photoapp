@@ -1,7 +1,8 @@
 <% provide(:title, "Рейтинг") %>
   <h1>Рейтинг</h1>
-<% if @all_items.any? %>
+ 
+ <%= paginate @all_items %>
+
   <ol class="microposts">
     <%= render @all_items %>
   </ol>
-<% end %>

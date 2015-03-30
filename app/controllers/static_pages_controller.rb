@@ -9,6 +9,6 @@ end
   end
 
   def raiting
-  	@all_items = current_user.all
+  	@all_items = current_user.all.paginate(page: params[:page])
   end
 end

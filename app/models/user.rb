@@ -17,5 +17,5 @@ def feed
 
  def all
     @microposts = Micropost.all
-  end 
+  end
 end
