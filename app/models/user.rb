@@ -16,6 +16,6 @@ def feed
   end
 
  def all
-    @microposts = Micropost.all
+    @microposts = Micropost.where(ban_status: false)
   end
 end
