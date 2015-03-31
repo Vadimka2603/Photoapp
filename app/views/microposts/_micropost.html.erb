@@ -1,3 +1,4 @@
+<% if current_user %>
 <li id="micropost-<%= micropost.id %>">
   <span class="user"><%= image_tag(micropost.user.avatar_url) if micropost.user.avatar? %><%= link_to micropost.user.name, micropost.user %></span>
   <span class="content">
@@ -10,3 +11,4 @@
                                         <% end %>
   </span>
 </li>
+<% end %>
