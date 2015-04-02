@@ -20,4 +20,10 @@ def feed
  def all
     @microposts = Micropost.where(ban_status: false)
   end
+
+  def liking?(micropost)
+    liked_microposts.include?(micropost)
+  end
+
+   
 end

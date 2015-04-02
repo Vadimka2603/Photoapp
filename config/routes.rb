@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
  
-  get 'likes/index'
+  
 
   devise_for :admin_users, ActiveAdmin::Devise.config
    ActiveAdmin.routes(self)
@@ -14,8 +14,9 @@ Rails.application.routes.draw do
 
     resources :sessions, only: [:create, :destroy]
     resources :users
-    resources :microposts,          only: [:create, :destroy]
-    resources :likes
+    resources :microposts,          only: [:create, :destroy]   
+    resources :likes,          only: [:create, :destroy]
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
