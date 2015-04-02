@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :microposts, dependent: :destroy
+  has_many :likes
+  has_many :liked_microposts, through: :likes, :source => :micropost
   mount_uploader :avatar, AvatarUploader
 	def self.from_omniauth(auth)
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
