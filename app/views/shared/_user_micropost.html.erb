@@ -10,6 +10,7 @@
     <% if @user.microposts.any? %>
       <h3>Фотографии пользователя (<%= @user.microposts.count %>)</h3>
       <ol class="microposts">
+        
         <%= render @microposts %>
       </ol>
       <%= will_paginate @microposts %>

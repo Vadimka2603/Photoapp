@@ -15,5 +15,30 @@
                                        data: { confirm: "Вы уверены?" }, class: "button22" %>
                                         <% end %>
   </span>
+  <br>
+  <details>
+ <summary>Комментарии  (<%= micropost.comments.count%>)</summary>
+  
+  <% micropost.comments.each do |comment| %>
+
+<span class="user"><%= link_to comment.user.name, comment.user %></span>
+        <span class="content"></span>
+  <h4><%= comment.content %></h4>
+  <% end %>
+<details>
+ <summary>Добавить комментарий</summary>
+<%= form_for([@user, micropost.comments.build]) do |f| %>
+  <%= hidden_field_tag 'micropost_id', micropost.id %>
+ <%= hidden_field_tag 'user_id', current_user.id %>
+  <div class="field">
+
+    <%= f.text_area :content, placeholder: "Добавить комментарий к фото..." %>
+  </div>
+  <%= f.submit "Добавить", class: "button1" %>
+  
+<% end %>
+
+</details>
+  </details>  
 </li>
 <% end %>
