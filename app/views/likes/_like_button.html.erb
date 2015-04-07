@@ -1,19 +1,12 @@
-
-
+<% if current_user.liking?(micropost) %>
+  <% like = micropost.likes.where(:user => current_user).first %>
+  <%= link_to "Dislike", like, :method => :delete, :class => "button21"%> (<%= micropost.likes_count %>)
     
-  <% if current_user.liking?(micropost) %>
-    
-
-       <% like = micropost.likes.where(:user => current_user).first %>
-      <%= link_to "Dislike", like, :method => :delete, :class => "button21"%> (<%= micropost.likes.count %>)
-    
-  <% else %>
-    <%= form_tag likes_path do %>
-
-      <%= hidden_field_tag 'micropost_id', micropost.id %>
-      <%= submit_tag "Like", :class => "like_button" %>(<%= micropost.likes.count %>)
-
-    <% end %>
+<% else %>
+  <%= form_tag likes_path do %>
+    <%= hidden_field_tag 'micropost_id', micropost.id %>
+    <%= submit_tag "Like", :class => "like_button" %>(<%= micropost.likes_count %>)
   <% end %>
+<% end %>
  
 

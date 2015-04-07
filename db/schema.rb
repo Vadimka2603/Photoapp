@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150403095623) do
+ActiveRecord::Schema.define(version: 20150407095623) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -64,10 +64,12 @@ ActiveRecord::Schema.define(version: 20150403095623) do
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "picture"
-    t.boolean  "ban_status", default: false
+    t.boolean  "ban_status",     default: false
+    t.integer  "likes_count",    default: 0
+    t.integer  "comments_count", default: 0
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
@@ -79,9 +81,12 @@ ActiveRecord::Schema.define(version: 20150403095623) do
     t.string   "name"
     t.string   "oauth_token"
     t.datetime "oauth_expires_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "avatar"
+    t.integer  "microposts_count", default: 0
+    t.integer  "likes_count",      default: 0
+    t.integer  "comments_count",   default: 0
   end
 
 end

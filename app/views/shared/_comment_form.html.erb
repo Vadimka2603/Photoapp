@@ -1,8 +1,6 @@
 <%= form_for(comment, html: { multipart: true }) do |f| %>
-  
   <div class="field">
     <%= f.text_area :content, placeholder: "Добавить комментарий к фото..." %>
   </div>
   <%= f.submit "Добавить", class: "button1" %>
-  
 <% end %>

@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-  
     <title><%= yield(:title) %> | Фотоконкурс</title>
     <%= stylesheet_link_tag    'application', media: 'all',
                                               'data-turbolinks-track' => true %>
@@ -9,14 +8,11 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-
-      
-      <%= flash[:notice]%>
-   <%= render 'layouts/header' %>
-    <div class="container">
-      <%= yield %>
-
-    </div>
-     <%= render 'layouts/footer' %>
+    <%= flash[:notice]%>
+    <%= render 'layouts/header' %>
+      <div class="container">
+        <%= yield %>
+      </div>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

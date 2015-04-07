@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  
   before_action :current_user, only: :create
 
   def create
@@ -7,7 +8,9 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
 
-def comment_params
+  private
+
+  def comment_params
     params.require(:comment).permit( :content).merge(user: current_user)
   end
 end
