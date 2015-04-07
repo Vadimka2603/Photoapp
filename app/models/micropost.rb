@@ -13,10 +13,6 @@ class Micropost < ActiveRecord::Base
   validates :content, length: { maximum: 70 }
   validate  :picture_size
 
-  def all
-    @microposts = Micropost.where(ban_status: false).order("likes_count DESC")
-  end
-
   private
 
   def picture_size

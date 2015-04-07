@@ -1,0 +1,39 @@
+  <details>
+    <summary>Комментарии  (<%= micropost.comments.where(parent_id: nil).count%>)</summary>
+      <% micropost.comments.where(parent_id: nil).each do |comment| %>
+        <span class="user"><%= link_to comment.user.name, comment.user %></span>
+        <h4><%= comment.content %></h4>
+        <% if comment.answers.any? %>
+          <div style="margin: 20px;"><%= comment.answers.each do |answer| %>
+            <span class="user"><%= link_to answer.user.name, answer.user %></span><br> 
+            <h4><%= answer.content %><br></h4> 
+            <% end %>
+          </div>  
+        <% end %>
+        
+           <details>
+            <summary>Добавить ответ</summary> 
+              <%= form_for([comment.answers.create]) do |f| %>
+                <%= hidden_field_tag 'micropost_id', micropost.id %>
+                <%= hidden_field_tag 'user_id', current_user.id %>
+                <%= hidden_field_tag 'comment_id', comment.id %>
+                <%= f.hidden_field :parent_id, parent_id: comment.id %>
+                  <div class="field">
+                    <%= f.text_area :content, placeholder: "Добавить комментарий к фото..." %>
+                  </div>
+                    <%= f.submit "Добавить", class: "button1" %>
+              <% end %>
+          </details>    
+      <% end %>
+  </details>     
+  <details>
+    <summary>Добавить комментарий</summary>
+    <%= form_for([@user, micropost.comments.build]) do |f| %>
+      <%= hidden_field_tag 'micropost_id', micropost.id %>
+      <%= hidden_field_tag 'user_id', current_user.id %>
+        <div class="field">
+          <%= f.text_area :content, placeholder: "Добавить комментарий к фото..." %>
+        </div>
+      <%= f.submit "Добавить", class: "button1" %>
+    <% end %>
+  </details>
