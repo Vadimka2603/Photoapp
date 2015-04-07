@@ -12,7 +12,9 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create, :destroy]
   resources :users do 
     resources :microposts do 
-      resources :comments
+      resources :comments do
+        resources :answers
+      end  
     end
   end
   resources :likes,          only: [:create, :destroy]
@@ -21,4 +23,5 @@ Rails.application.routes.draw do
   resources :users do 
     resources :comments
   end
+
 end

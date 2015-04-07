@@ -3,7 +3,6 @@ class CreateMicroposts < ActiveRecord::Migration
     create_table :microposts do |t|
       t.text :content
       t.references :user, index: true
-
       t.timestamps null: false
     end
     add_foreign_key :microposts, :users

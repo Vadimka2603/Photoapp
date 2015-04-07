@@ -20,6 +20,21 @@
         <span class="user"><%= link_to comment.user.name, comment.user %></span>
         <span class="content"></span>
         <h4><%= comment.content %></h4>
+        <h4><%= comment.answers.each do |answer| %></h4>
+              <%= answer.content %>
+              <% end %>
+           <details>
+            <summary>Добавить ответ</summary> 
+              <%= form_for([comment.answers.create]) do |f| %>
+                <%= hidden_field_tag 'micropost_id', micropost.id %>
+                <%= hidden_field_tag 'user_id', current_user.id %>
+                <%= hidden_field_tag 'parent_id', comment.id %>
+                  <div class="field">
+                    <%= f.text_area :content, placeholder: "Добавить комментарий к фото..." %>
+                  </div>
+                    <%= f.submit "Добавить", class: "button1" %>
+              <% end %>
+          </details>    
       <% end %>
     <details>
       <summary>Добавить комментарий</summary>
