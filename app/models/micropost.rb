@@ -9,7 +9,8 @@ class Micropost < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  validates :user_id, :picture, presence: true
+  validates :user_id, presence: true
+  #validates :picture, presence: true
   validates :content, length: { maximum: 70 }
   validate  :picture_size
 

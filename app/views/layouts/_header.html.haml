@@ -1,0 +1,12 @@
+%header.navbar.navbar-fixed-top.navbar-inverse
+  .container
+    = link_to "Рейтинг", raiting_path, id: "logo"
+    %nav
+      %ul.nav.navbar-nav.navbar-right
+        %li= link_to "Главная страница", root_path
+        %li= link_to "Помощь",   help_path
+        %li
+          - if current_user
+            %li= link_to "Участники", users_path
+            %li= link_to "Выход", signout_path, id: "Sign out"
+          - else

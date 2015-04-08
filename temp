@@ -1,0 +1,43 @@
+
+
+
+
+          - if answer.answers.any?
+            %div{:style => "margin: 20px;"}
+              = answer.answers.each do |answer|
+                %span.user= link_to answer.user.name, answer.user
+                %br/
+                %h4
+                  = answer.content
+                  %br/
+              %details
+                %summary Добавить ответ
+                = form_for([answer.answers.create]) do |f|
+                  = hidden_field_tag 'micropost_id', micropost.id
+                  = hidden_field_tag 'comment_id', answer.id
+                  = f.hidden_field :parent_id, parent_id: answer.id
+                  .field
+                    = f.text_area :content, placeholder: "Добавить комментарий к фото..."
+                  = f.submit "Добавить", class: "button1"
+
+                   - if comment.answers.any?
+      %div{:style => "margin: 20px;"}
+        = comment.answers.each do |answer|
+          %span.user= link_to answer.user.name, answer.user
+          %br/
+          %h4
+            = answer.content
+            %br/
+   
+          %details
+            %summary Добавить ответ
+            = form_for([comment.answers.create]) do |f|
+              = hidden_field_tag 'micropost_id', micropost.id
+              = hidden_field_tag 'comment_id', comment.id
+              = f.hidden_field :parent_id, parent_id: comment.id
+              .field
+                = f.text_area :content, placeholder: "Добавить комментарий к фото..."
+              = f.submit "Добавить", class: "button1"
+
+              
+              

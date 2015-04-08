@@ -1,0 +1,9 @@
+- provide(:title, @user.name)
+- if current_user==@user
+  - if current_user
+    .row
+      %aside.col-md-4
+        %section.micropost_form= render 'shared/micropost_form'
+  = render 'shared/user_micropost'
+- else
+  = render 'shared/user_micropost'

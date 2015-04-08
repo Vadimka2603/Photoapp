@@ -1,0 +1,8 @@
+- provide(:title, "Рейтинг")
+%h1 Рейтинг
+- if @current_user
+  = paginate @all_items
+  %ol.microposts= render @all_items
+- else
+  %p
+    Просмотр рейтинга доступен только зарегестрированым пользвателям

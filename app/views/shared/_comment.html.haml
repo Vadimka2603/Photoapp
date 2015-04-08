@@ -1,0 +1,14 @@
+%span.user= link_to comment.user.name, comment.user
+.comment
+  = comment.content
+  = render collection: comment.answers, partial: 'shared/comment'
+
+%details
+  %summary Добавить ответ
+  = form_for([comment.answers.create]) do |f|
+    = hidden_field_tag 'micropost_id', comment.micropost.id
+    = hidden_field_tag 'comment_id', comment.id
+    = f.hidden_field :parent_id, parent_id: comment.id
+    .field
+      = f.text_area :content, placeholder: "Добавить комментарий к фото..."
+    = f.submit "Добавить", class: "button1"

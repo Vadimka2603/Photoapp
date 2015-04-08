@@ -1,0 +1,12 @@
+.row
+  %aside.col-md-4
+    %section.user_info
+      %h3
+        = image_tag(@user.avatar_url) if @user.avatar?
+        = @user.name
+.col-md-8
+  - if @user.microposts.any?
+    %h3
+      Фотографии пользователя (#{@user.microposts_count})
+    %ol.microposts= render @microposts
+    = will_paginate @microposts
