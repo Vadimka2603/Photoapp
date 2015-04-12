@@ -2,7 +2,6 @@
   %summary
     Комментарии  (#{micropost.comments.where(parent_id: nil).count})
     = render collection: micropost.comments.where(parent_id: nil), partial: 'shared/comment'
-  
 %details
   %summary Добавить комментарий
   = form_for([@user, micropost.comments.build]) do |f|

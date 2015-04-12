@@ -13,7 +13,7 @@ scope :all, :default => true
     microposts.where(:ban_status => true)
   end
   scope :legal do |microposts|
-    microposts.where(:ban_status => false)
+    microposts.where(ban_status: false)
   end
 
 index do

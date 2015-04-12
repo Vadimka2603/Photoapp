@@ -21,11 +21,4 @@ class User < ActiveRecord::Base
     liked_microposts.include?(micropost)
   end
 
-  def feed
-    @microposts = Micropost.order("created_at DESC").take(10)
-  end
-
-  def all
-    @microposts = Micropost.where(ban_status: false).order("likes_count DESC")
-  end
 end

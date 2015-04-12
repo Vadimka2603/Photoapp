@@ -14,6 +14,9 @@ class Micropost < ActiveRecord::Base
   validates :content, length: { maximum: 70 }
   validate  :picture_size
 
+  scope :feed, -> { order(created_at: :desc).take(10) }
+  scope :legal, -> { where(ban_status: false) }
+  
   private
 
   def picture_size

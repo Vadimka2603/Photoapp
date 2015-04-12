@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def home
   	if current_user
-  	  @feed_items = current_user.feed
+  	  @feed_items = Micropost.feed
     end
   end
 
@@ -11,7 +11,7 @@ class StaticPagesController < ApplicationController
 
   def raiting
     if current_user
-  	  @all_items = current_user.all.paginate(page: params[:page])
+  	  @all_items = Micropost.legal.order(likes_count: :desc).paginate(page: params[:page])
     end 
   end
 end
