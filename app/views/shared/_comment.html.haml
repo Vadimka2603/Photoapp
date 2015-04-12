@@ -1,6 +1,9 @@
-%span.user= link_to comment.user.name, comment.user
+= link_to comment.user.name, comment.user
+%br/
 .comment
   = comment.content
+  %br/
+  
   = render collection: comment.answers, partial: 'shared/comment'
 
 %details
