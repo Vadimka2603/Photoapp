@@ -81,12 +81,14 @@ ActiveRecord::Schema.define(version: 20150413134630) do
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
     t.string   "picture"
-    t.boolean  "ban_status",     default: false
-    t.integer  "likes_count",    default: 0
-    t.integer  "comments_count", default: 0
+    t.boolean  "ban_status",          default: false
+    t.integer  "likes_count",         default: 0
+    t.integer  "comments_count",      default: 0
+    t.integer  "instagram_id"
+    t.string   "instagram_user_name"
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at"
