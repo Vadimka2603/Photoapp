@@ -10,15 +10,13 @@ ActiveAdmin.register Hashtag do
   end
 
   member_action :subscribe do
-    begin
+    
       hashtag = Hashtag.find params[:id]
       Instagram.create_subscription(object: 'tag', 
                                     callback_url: 'https://shrouded-garden-5776.herokuapp.com/instagram', 
                                     object_id: hashtag.name)
       redirect_to admin_hashtags_path, :notice => "успешная подписка"
-    rescue Instagram::BadRequest
-      redirect_to admin_hashtags_path, :notice => "неудача"
-    end  
+      
   end
 
   form do |f|
