@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'help'    => 'static_pages#help'
   get 'raiting' => 'static_pages#raiting'
   get 'instagram' => 'users#instagram'
+  get 'callback' => 'users#instagram#callback'
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
