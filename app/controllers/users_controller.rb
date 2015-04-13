@@ -20,4 +20,7 @@ class UsersController < ApplicationController
     @tag = @tag.first.name
     @results = Instagram.tag_recent_media(@tag, {:count =>10} )
   end
+
+  def callback
+  end
 end
