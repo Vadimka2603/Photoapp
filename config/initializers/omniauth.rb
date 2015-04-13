@@ -5,4 +5,5 @@ Rails.application.config.middleware.use OmniAuth::Builder do
   secure_image_url: 'true'
            
   provider :vkontakte, ENV["VK_APP_ID"], ENV["VK_SECRET"]
+  
 end

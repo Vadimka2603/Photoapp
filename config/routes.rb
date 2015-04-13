@@ -5,8 +5,7 @@ Rails.application.routes.draw do
   root             'static_pages#home'
   get 'help'    => 'static_pages#help'
   get 'raiting' => 'static_pages#raiting'
-  get 'instagram' => 'users#instagram'
-  get 'callback' => 'users#callback'
+
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
   get 'signout', to: 'sessions#destroy', as: 'signout'
@@ -24,6 +23,9 @@ Rails.application.routes.draw do
   resources :microposts, only: [:create, :destroy]
   resources :users do 
     resources :comments
+  end
+  resource :instagram do
+    resource :callback, only: [:show, :create]
   end
 
 end
