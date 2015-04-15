@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: dd5d6573f8267c4f883bebd4d8ebf188b2446712
+  revision: 7624737254d15ac3fc6403e59bf7269953d0fb68
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -87,7 +87,7 @@ GEM
     coffee-script (2.4.1)
       coffee-script-source
       execjs
-    coffee-script-source (1.9.1)
+    coffee-script-source (1.9.1.1)
     columnize (0.9.0)
     debug_inspector (0.0.2)
     debugger-linecache (1.2.0)
@@ -100,7 +100,7 @@ GEM
       warden (~> 1.2.3)
     erubis (2.7.0)
     excon (0.45.1)
-    execjs (2.5.0)
+    execjs (2.5.2)
     faker (1.4.2)
       i18n (~> 0.5)
     faraday (0.9.1)
@@ -136,7 +136,7 @@ GEM
     fog-json (1.0.1)
       fog-core (~> 1.0)
       multi_json (~> 1.0)
-    fog-softlayer (0.4.2)
+    fog-softlayer (0.4.5)
       fog-core
       fog-json
     fog-xml (0.1.2)
@@ -145,8 +145,8 @@ GEM
     formatador (0.2.5)
     formtastic (3.1.3)
       actionpack (>= 3.2.13)
-    formtastic_i18n (0.2.0)
-    globalid (0.3.3)
+    formtastic_i18n (0.3.0)
+    globalid (0.3.5)
       activesupport (>= 4.1.0)
     guard (2.12.5)
       formatador (>= 0.2.4)
@@ -166,7 +166,6 @@ GEM
       actionpack (>= 3.2, < 5)
       activesupport (>= 3.2, < 5)
     hashie (3.4.1)
-    hike (1.2.3)
     hitimes (1.2.2)
     i18n (0.7.0)
     inflecto (0.0.2)
@@ -175,7 +174,7 @@ GEM
       has_scope (~> 0.6.0.rc)
       railties (>= 3.2, < 5)
       responders
-    instagram (1.1.4)
+    instagram (1.1.5)
       faraday (>= 0.7, < 0.10)
       faraday_middleware (>= 0.8, < 0.10)
       hashie (>= 0.4.0)
@@ -212,7 +211,7 @@ GEM
     mini_magick (3.8.0)
       subexec (~> 0.2.1)
     mini_portile (0.6.2)
-    minitest (5.5.1)
+    minitest (5.6.0)
     minitest-reporters (1.0.5)
       ansi
       builder
@@ -317,11 +316,8 @@ GEM
     shellany (0.0.1)
     slop (3.6.0)
     spring (1.1.3)
-    sprockets (2.12.3)
-      hike (~> 1.2)
-      multi_json (~> 1.0)
+    sprockets (3.0.1)
       rack (~> 1.0)
-      tilt (~> 1.1, != 1.3.0)
     sprockets-rails (2.2.4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)

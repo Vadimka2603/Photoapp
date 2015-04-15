@@ -28,4 +28,13 @@ Rails.application.routes.draw do
     resource :callback, only: [:show, :create]
   end
 
+  namespace :api, defaults: {format: 'json'} do
+    resources :users
+    resources :microposts
+    resources :comments
+    resource  :raiting
+      
+       
+  end  
+
 end
