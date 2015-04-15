@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
 
-	def self.from_omniauth(auth)
+  def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
       user.provider = auth.provider 
       user.uid      = auth.uid
@@ -20,5 +20,7 @@ class User < ActiveRecord::Base
   def liking?(micropost)
     liked_microposts.include?(micropost)
   end
+
+  
 
 end
