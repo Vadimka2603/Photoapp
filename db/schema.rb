@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150413134630) do
+ActiveRecord::Schema.define(version: 20150416100211) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20150413134630) do
     t.integer  "microposts_count", default: 0
     t.integer  "likes_count",      default: 0
     t.integer  "comments_count",   default: 0
+    t.string   "auth_token"
   end
 
 end
