@@ -1,6 +1,7 @@
 module Api
   class UsersController < ApplicationController
-  	
+  	include Authenticatable
+    before_action :authenticate
 
     def index
       @users = User.all

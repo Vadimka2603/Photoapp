@@ -19,6 +19,10 @@ class MicropostsController < ApplicationController
     flash[:success] = "Photo deleted"
     redirect_to current_user || root_url
   end
+  
+  def show
+    @micropost = Micropost.find(params[:id])
+  end
 
   private
 

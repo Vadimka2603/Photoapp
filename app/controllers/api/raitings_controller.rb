@@ -3,10 +3,6 @@ module Api
 
     def show
       @all_items = Micropost.legal.order(likes_count: :desc) 
-        
-   
-      
     end
-
   end
 end
