@@ -1,7 +1,5 @@
 class User < ActiveRecord::Base
 
-  before_create :set_auth_token
-
 	has_many :microposts, dependent: :destroy
   has_many :likes
   has_many :liked_microposts, through: :likes, :source => :micropost
