@@ -1,7 +1,11 @@
-json.array! @comments do |comment|
+json.array! @wanted do |comment|
   json.comment do
     json.id comment.id
-    json.user comment.user.name
+    json.user do
+      json.name comment.user.name
+      json.id   comment.user.id
+      json.comments comment.user.comments_count
+    end
     json.micropost do
       json.id  comment.micropost.id
       json.picture comment.micropost.picture

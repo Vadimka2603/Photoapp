@@ -4,10 +4,16 @@ module Api
   	#before_filter :authenticate
 
     def index
-      @comments = Comment.all
+      @nonull = Comment.where("parent_id is not null").order("parent_id desc")
+	  @yesnull = Comment.where("parent_id is null")
+	  @wanted = @yesnull+@nonull
       respond_to do |format|
         format.json 
       end
+    end
+
+    def show
+      @comment = Comment.find(params[:id])
     end
 
 	def create

@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/activeadmin/activeadmin.git
-  revision: 7624737254d15ac3fc6403e59bf7269953d0fb68
+  revision: 8968efcc51cc7c765c35c75aa7bf68c758ca03f3
   specs:
     activeadmin (1.0.0.pre1)
       arbre (~> 1.0, >= 1.0.2)
@@ -99,7 +99,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     erubis (2.7.0)
-    excon (0.45.1)
+    excon (0.45.2)
     execjs (2.5.2)
     faker (1.4.2)
       i18n (~> 0.5)
