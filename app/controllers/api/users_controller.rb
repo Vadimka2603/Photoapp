@@ -4,7 +4,7 @@ module Api
     before_action :authenticate
 
     def index
-      @users = User.paginate(page: params[:page])
+      @users = User.paginate(page: params[:page]).order(created_at: :asc)
       respond_to do |format|
         format.json 
       end
