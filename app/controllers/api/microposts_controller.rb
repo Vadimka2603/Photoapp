@@ -4,7 +4,7 @@ module Api
   	before_action :authenticate
     #http_basic_authenticate_with name: "admin", password: "secret"
     def index
-      @microposts = Micropost.all
+      @microposts = Micropost.paginate(page: params[:page])
       respond_to do |format|
         format.json 
       end
