@@ -4,11 +4,9 @@ module Api
   	#before_filter :authenticate
 
     def index
-      @nonull = Comment.where("parent_id is not null").order("parent_id desc")
-	  @yesnull = Comment.where("parent_id is null")
-	  @wanted = @yesnull+@nonull
-      respond_to do |format|
-        format.json 
+      @comment = Comment.where(parent_id: nil).order(parent_id: :desc)
+	    respond_to do |format|
+      format.json 
       end
     end
 
@@ -16,11 +14,9 @@ module Api
       @comment = Comment.find(params[:id])
     end
 
-	def create
-      @comment = Comment.create(comment_params)
-       if @comment.save
-        render json: @comment
-       end
+	  def create
+      outcome = CommentCreate.run!(params[:comment].merge( user: current_user, micropost: Micropost.find(params[:micropost_id])))
+      render json: outcome
     end
 
     def comment_params

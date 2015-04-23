@@ -11,10 +11,8 @@ module Api
     end
 
     def create
-    @micropost = Micropost.create(micropost_params)
-      if @micropost.save
-        render json: @micropost
-      end
+    outcome = MicropostCreate.run!(params[:micropost].merge( user: current_user))
+      render json: outcome
     end
 
     def show
@@ -25,13 +23,6 @@ module Api
       micropost = Micropost.find(params[:id])
       micropost.destroy
       render json: @micropost
-    end
-
-
-    private
-
-    def micropost_params
-      params.require(:micropost).permit(:content, :picture).merge(user: current_user)
     end
   end
 end

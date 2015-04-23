@@ -1,5 +1,23 @@
 class Micropost < ActiveRecord::Base
 
+  include AASM
+
+  aasm do
+    state :moderating, :initial => true
+    state :uproved
+    state :banned
+
+    event :uprove do
+      transitions :from => [:moderating, :banned], :to => :uproved
+
+    end
+
+    event :ban do
+      transitions :from => [:moderating, :uproved], :to => :banned
+    end
+
+  end
+
   belongs_to :user, :counter_cache => true
 
   has_many :likes
@@ -9,13 +27,8 @@ class Micropost < ActiveRecord::Base
 
   mount_uploader :picture, PictureUploader
 
-  validates :user_id, presence: true
-  #validates :picture, presence: true
-  validates :content, length: { maximum: 70 }
-  validate  :picture_size
-
   scope :feed, -> { order(created_at: :desc).take(10) }
-  scope :legal, -> { where(ban_status: false) }
+  
   
   private
 

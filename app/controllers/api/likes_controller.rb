@@ -1,7 +1,7 @@
 module Api
   class LikesController < ApplicationController
     include Authenticatable
-    #before_filter :authenticate
+    before_action :authenticate
 
     def index
       @likes = Like.all
@@ -11,10 +11,8 @@ module Api
     end
 
     def create
-      @like = Like.create(comment_params)
-       if @like.save
-        render json: @like
-       end
+    outcome = LikeCreate.run!(user: current_user, micropost: Micropost.find(params[:micropost_id]))
+      render json: outcome
     end
 
     def destroy
@@ -22,8 +20,6 @@ module Api
       like.destroy
     end
 
-    def comment_params
-      params.require(:like).permit(:micropost_id).merge(user: current_user)
-    end
+    
   end
 end

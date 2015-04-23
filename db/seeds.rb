@@ -1,13 +1,13 @@
 User.create!(name:  "Example User")
-99.times do |n|
+10.times do |n|
   name  = Faker::Name.name
   User.create!(name: name)
 end
 
 users = User.order(:created_at).take(6)
-50.times do
+5.times do
   content = Faker::Lorem.word
-  picture = Faker::Avatar.image
+  picture = open("http://lorempixel.com/1170/600/people/")
   users.each { |user| user.microposts.create!(content: content, picture: picture) }
 end
 

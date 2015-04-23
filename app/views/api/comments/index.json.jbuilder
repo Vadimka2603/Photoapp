@@ -1,4 +1,4 @@
-json.array! @wanted do |comment|
+json.array! @comment do |comment|
   json.comment do
     json.id comment.id
     json.user do
@@ -12,6 +12,11 @@ json.array! @wanted do |comment|
       json.content comment.micropost.content
     end   
     json.content comment.content
-    json.answers_count comment.answers.count
+    json.answers do
+      json.answers_count comment.answers.count
+      json.array! comment.answers do |answer|
+        json.content answer.content
+      end
+    end
   end
 end

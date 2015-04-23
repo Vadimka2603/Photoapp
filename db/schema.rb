@@ -81,10 +81,10 @@ ActiveRecord::Schema.define(version: 20150413134630) do
   create_table "microposts", force: :cascade do |t|
     t.text     "content"
     t.integer  "user_id"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
     t.string   "picture"
-    t.boolean  "ban_status",          default: false
+    t.string   "aasm_state"
     t.integer  "likes_count",         default: 0
     t.integer  "comments_count",      default: 0
     t.integer  "instagram_id"

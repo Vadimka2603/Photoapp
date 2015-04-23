@@ -10,11 +10,15 @@ filter :created_at
 
 scope :all, :default => true
   scope :banned do |microposts|
-    microposts.where(:ban_status => true)
+    microposts.where(aasm_state: :banned)
   end
   scope :legal do |microposts|
-    microposts.where(ban_status: false)
+    microposts.where(aasm_state: :uproved)
   end
+  scope :moderating do |microposts|
+    microposts.where(aasm_state: :moderating)
+  end
+
 
 index do
   column :user
@@ -23,21 +27,31 @@ index do
   end
   column :content
   actions
-  column :ban_status
-  column "Бан" do |micropost|
-    link_to('Изменить статус бана', ban_admin_micropost_path(micropost))
+  column :aasm_state
+  column "Модерация" do |micropost|
+    if micropost.banned?
+    else
+      link_to('Забанить', ban_admin_micropost_path(micropost))
+    end  
+  end
+  column "Модерация" do |micropost|
+    if micropost.uproved?
+    else
+      link_to('Разрешить', uprove_admin_micropost_path(micropost))
+    end
   end
 end
 
 member_action :ban do
   micropost = Micropost.find params[:id]
-    if micropost.ban_status?
-      micropost.update_attribute(:ban_status, false)
-      redirect_to admin_microposts_path
-    else
-      micropost.update_attribute(:ban_status, true)
-      redirect_to admin_microposts_path
-    end
+  micropost.ban!
+  redirect_to admin_microposts_path, :notice => "микропост забанен"
+end
+
+member_action :uprove do
+  micropost = Micropost.find params[:id]
+  micropost.uprove!
+  redirect_to admin_microposts_path, :notice => "микропост разрешен"
 end
 
 show :title => "Фото" do
@@ -50,16 +64,8 @@ sidebar "Данные", :only => :show do
     row :user 
     row :content
     row :created_at
-    row :ban_status
+    row :aasm_state
   end
 end
 
-  form do |f|
-  	div :class => "form" do 
-    f.inputs 'Забанить' do
-    f.input :ban_status
-    end
-    f.actions
-    end
-  end
 end

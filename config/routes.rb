@@ -18,9 +18,11 @@ Rails.application.routes.draw do
       end  
     end
   end
-  resources :likes,          only: [:create, :destroy]
+  
   resources :comments
-  resources :microposts, only: [:create, :show, :destroy]
+  resources :microposts, only: [:create, :show, :destroy] do
+    resources :likes,          only: [:show, :create, :destroy]
+  end
   resources :users do 
     resources :comments
   end
@@ -30,9 +32,12 @@ Rails.application.routes.draw do
 
   namespace :api, defaults: {format: 'json'} do
     resources :users
-    resources :microposts
-    resources :comments
+    resources :microposts do
+      resources :likes, controller: :likes
+      resources :comments, controller: :comments
+    end
     resources :likes
+    resources :comments
     resource  :raiting
       
        
