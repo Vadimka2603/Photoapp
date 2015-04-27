@@ -15,14 +15,14 @@ module Api
       render json: outcome
     end
 
-    def show
-      @micropost = Micropost.find(params[:id])
-    end
-
     def destroy
-      micropost = Micropost.find(params[:id])
+      micropost = FindMicropost.run(params).result
       micropost.destroy
       render json: @micropost
+    end
+
+    def show
+      @micropost = FindMicropost.run(params).result
     end
   end
 end

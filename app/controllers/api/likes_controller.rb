@@ -20,6 +20,8 @@ module Api
       like.destroy
     end
 
-    
+    def show
+      @like = Like.find(params[:id])
+    end
   end
 end

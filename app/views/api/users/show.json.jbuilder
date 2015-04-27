@@ -1,2 +1,2 @@
 
-json.(@current_user, :name, :id)
+json.(@user, :name, :id)

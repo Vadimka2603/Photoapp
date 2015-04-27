@@ -14,7 +14,7 @@ module Api
       @comment = Comment.find(params[:id])
     end
 
-	  def create
+	def create
       outcome = CommentCreate.run!(params[:comment].merge( user: current_user, micropost: Micropost.find(params[:micropost_id])))
       render json: outcome
     end

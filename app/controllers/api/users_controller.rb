@@ -11,8 +11,11 @@ module Api
     end
 
     def show
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @user = User.find(params[:id])
     end
 
+    def current
+      @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    end
   end
 end

@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       end  
     end
   end
+ resources :likes,          only: [:show, :create, :destroy]
   
   resources :comments
   resources :microposts, only: [:create, :show, :destroy] do
@@ -31,7 +32,8 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: {format: 'json'} do
-    resources :users
+    resources :users 
+    get 'current_user' => 'users#current'
     resources :microposts do
       resources :likes, controller: :likes
       resources :comments, controller: :comments
