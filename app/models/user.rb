@@ -1,4 +1,23 @@
+# == Schema Information
+#
+# Table name: users
+#
+#  id               :integer          not null, primary key
+#  provider         :string
+#  uid              :string
+#  name             :string
+#  oauth_token      :string
+#  oauth_expires_at :datetime
+#  created_at       :datetime         not null
+#  updated_at       :datetime         not null
+#  avatar           :string
+#  microposts_count :integer          default(0)
+#  likes_count      :integer          default(0)
+#  comments_count   :integer          default(0)
+#
+
 class User < ActiveRecord::Base
+  self.per_page = 7
 
 	has_many :microposts, dependent: :destroy
   has_many :likes

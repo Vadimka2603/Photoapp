@@ -1,5 +1,22 @@
-class Micropost < ActiveRecord::Base
+# == Schema Information
+#
+# Table name: microposts
+#
+#  id                  :integer          not null, primary key
+#  content             :text
+#  user_id             :integer
+#  created_at          :datetime         not null
+#  updated_at          :datetime         not null
+#  picture             :string
+#  aasm_state          :string
+#  likes_count         :integer          default(0)
+#  comments_count      :integer          default(0)
+#  instagram_id        :integer
+#  instagram_user_name :string
+#
 
+class Micropost < ActiveRecord::Base
+  self.per_page = 10
   include AASM
 
   aasm do

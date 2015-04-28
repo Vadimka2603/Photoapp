@@ -4,7 +4,7 @@ module Api
   	before_action :authenticate
 
     def index
-      @microposts = Micropost.paginate(page: params[:page], per_page: 7).order(comments_count: :desc)
+      @microposts = Micropost.paginate(page: params[:page], per: params[:per]).order(comments_count: :desc)
     end
 
     def create

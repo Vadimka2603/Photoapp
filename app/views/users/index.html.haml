@@ -11,8 +11,12 @@
   %p
     Нет юзеров, имя которых содержит #{params[:search]}.
 
-
-= form_for(@by_name, html: { multipart: true }) do |f|
-  = f.submit "Добавить", class: "button1"
-
+= form_tag(users_path, method: "get", id: "sort-form") do
+  %select{:name => "sort"}
+    %option
+    %option activity
+    %option microposts_count
+    %option provider
+    %option date
+    = submit_tag "Сортировать"
 

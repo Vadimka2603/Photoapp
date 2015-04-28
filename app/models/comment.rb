@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: comments
+#
+#  id           :integer          not null, primary key
+#  user_id      :integer
+#  micropost_id :integer
+#  content      :text
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  parent_id    :integer
+#
+
 class Comment < ActiveRecord::Base
 
   belongs_to :micropost, :counter_cache => true
