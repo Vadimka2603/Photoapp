@@ -18,11 +18,11 @@ Rails.application.routes.draw do
       end  
     end
   end
- resources :likes,          only: [:show, :create, :destroy]
+ resources :likes
   
   resources :comments
-  resources :microposts, only: [:create, :show, :destroy] do
-    resources :likes,          only: [:show, :create, :destroy]
+  resources :microposts do
+    resources :likes, controller: :likes
   end
   resources :users do 
     resources :comments
@@ -38,11 +38,7 @@ Rails.application.routes.draw do
       resources :likes, controller: :likes
       resources :comments, controller: :comments
     end
-    resources :likes
     resources :comments
     resource  :raiting
-      
-       
   end  
-
 end

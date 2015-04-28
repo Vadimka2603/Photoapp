@@ -12,11 +12,6 @@ json.array! @comment do |comment|
       json.content comment.micropost.content
     end   
     json.content comment.content
-    json.answers do
-      json.answers_count comment.answers.count
-      json.array! comment.answers do |answer|
-        json.content answer.content
-      end
-    end
+    json.partial! 'api/comments/answers'
   end
 end

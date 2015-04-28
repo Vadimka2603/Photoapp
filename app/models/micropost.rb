@@ -4,16 +4,16 @@ class Micropost < ActiveRecord::Base
 
   aasm do
     state :moderating, :initial => true
-    state :uproved
+    state :approved
     state :banned
 
-    event :uprove do
-      transitions :from => [:moderating, :banned], :to => :uproved
+    event :approve do
+      transitions :from => [:moderating, :banned], :to => :approved
 
     end
 
     event :ban do
-      transitions :from => [:moderating, :uproved], :to => :banned
+      transitions :from => [:moderating, :approved], :to => :banned
     end
 
   end
@@ -34,7 +34,7 @@ class Micropost < ActiveRecord::Base
 
   def picture_size
     if picture.size > 5.megabytes
-      errors.add(:picture, "should be less than 5MB")
+      raise "should be less than 5MB"
     end
   end
 end

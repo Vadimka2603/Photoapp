@@ -2,3 +2,17 @@
 %h1 Все участники
 = will_paginate
 %ul.users= render @users
+
+= form_tag(users_path, method: "get", id: "search-form") do
+  = text_field_tag :search, params[:search], placeholder: "Поиск юзеров"
+  = submit_tag "Поиск"
+
+- unless @users.present?
+  %p
+    Нет юзеров, имя которых содержит #{params[:search]}.
+
+
+= form_for(@by_name, html: { multipart: true }) do |f|
+  = f.submit "Добавить", class: "button1"
+
+

@@ -9,12 +9,14 @@ ActiveAdmin.register User do
     column "Avatar" do |user|
       link_to image_tag(user.avatar_url)
     end
-    column :name
+    column "name" do |user|
+      link_to user.name, admin_user_path(user)
+    end
     column :provider
     column "Number of photos" do |user|
       user.microposts.count
     end
-    column "Show user micrposts", only: [:show, :edit] do |user|
+    column "Show user micrposts" do |user|
       link_to "Microposts", admin_user_microposts_path(user)
     end
   end
@@ -27,7 +29,7 @@ ActiveAdmin.register User do
       end
       row :name
       row :provider
-      row "Show user micrposts", only: [:show, :edit] do |user|
+      row "Show user micrposts" do |user|
         link_to "Microposts", admin_user_microposts_path(user)
       end
     end

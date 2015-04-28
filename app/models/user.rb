@@ -21,4 +21,10 @@ class User < ActiveRecord::Base
   def liking?(micropost)
     liked_microposts.include?(micropost)
   end
+
+  private
+
+  def self.search(search)
+    where("name LIKE ?", "%#{search}%") 
+  end
 end

@@ -4,24 +4,22 @@ module Api
     before_action :authenticate
 
     def index
-      @likes = Like.all
-      respond_to do |format|
-        format.json 
-      end
+      @micropost = Micropost.find(params[:micropost_id])
+      @likes = @micropost.likes
     end
 
     def create
-    outcome = LikeCreate.run!(user: current_user, micropost: Micropost.find(params[:micropost_id]))
+    outcome = Likes::Create.run!(user: current_user, micropost: Micropost.find(params[:micropost_id]))
       render json: outcome
     end
 
     def destroy
-      like = Like.find(params[:id])
+      like = Likes::Find.run(params).result
       like.destroy
     end
 
     def show
-      @like = Like.find(params[:id])
+      @like = Likes::Find.run(params).result
     end
   end
 end

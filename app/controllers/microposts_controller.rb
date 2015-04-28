@@ -1,27 +1,21 @@
 class MicropostsController < ApplicationController
-
+  include Authenticatable
+  
   before_action :current_user, only: [:create, :destroy]
-  before_action :correct_user,   only: :destroy
+  before_action :correct_user, only: :destroy
 
   def create
-    @micropost = current_user.microposts.build(micropost_params)
-      if @micropost.save
-        flash[:success] = "Photo added!"
-        redirect_to current_user
-      else
-    	  @feed_items = []
-        redirect_to current_user
-      end
+    @micropost = Microposts::Create.run!(params[:micropost].merge( user: current_user))
+    redirect_to current_user, notice: "микропост cоздан и ожидает модерации"
   end
 
   def destroy
     @micropost.destroy
-    flash[:success] = "Photo deleted"
-    redirect_to current_user || root_url
+    redirect_to current_user || root_url, notice: "микропост был удален"
   end
   
   def show
-    @micropost = Micropost.find(params[:id])
+    @micropost = Microposts::Find.run(params).result
   end
 
   private
@@ -29,9 +23,5 @@ class MicropostsController < ApplicationController
   def correct_user
     @micropost = current_user.microposts.find_by(id: params[:id])
     redirect_to current_user if @micropost.nil?
-  end
-
-  def micropost_params
-    params.require(:micropost).permit(:content, :picture, :ban_status)
   end
 end

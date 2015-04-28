@@ -1,14 +1,13 @@
 class LikesController < ApplicationController
-   
+  include Authenticatable
   def create
-    micropost = Micropost.find(params[:micropost_id])
-    Like.create(:micropost => micropost, :user => current_user)
+    Likes::Create.run!(user: current_user, micropost: Micropost.find(params[:micropost_id]))
     redirect_to :back, :notice => "Вы оценили фото"
   end
 
   def destroy
-    like = Like.find(params[:id])
+    like = Likes::Find.run(params).result
     like.destroy
-    redirect_to :back
+    redirect_to :back, :notice => "Лайк удален"
   end
 end
