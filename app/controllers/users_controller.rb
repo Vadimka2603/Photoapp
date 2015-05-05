@@ -3,14 +3,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @microposts = @user.microposts.paginate(page: params[:page], per: params[:per]).order(created_at: :desc)
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 3).order(created_at: :desc)
     @micropost = current_user.microposts.build if current_user
   end
 
   def index
-    @users = User.paginate(page: params[:page], per: params[:per])
+    @users = User.paginate(page: params[:page], per_page: 5)
     if params[:search]
-      @users = User.search(params[:search]).paginate(page: params[:page], per: params[:per])
+      @users = User.search(params[:search]).paginate(page: params[:page], per_page: 5)
     end
 
     case params[:sort]

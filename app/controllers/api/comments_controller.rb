@@ -3,7 +3,7 @@ module Api
     include Authenticatable
   	
     def index
-      @comment = Comment.where(parent_id: nil).order(parent_id: :desc).paginate(page: params[:page], per: params[:per])
+      @comment = Comment.where(parent_id: nil).order(parent_id: :desc).paginate(page: params[:page], per_page: 5)
 	  end
 
     def show

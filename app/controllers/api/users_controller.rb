@@ -6,7 +6,7 @@ module Api
     def index
       @users = User..paginate(page: params[:page], per: params[:per])
       if params[:search]
-        @users = User.search(params[:search]).paginate(page: params[:page], per: params[:per])
+        @users = User.search(params[:search]).paginate(page: params[:page], per_page: 5)
       end
 
       case params[:sort]
